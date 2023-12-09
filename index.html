@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <py-script>
+        import datetime
+        dt = datetime.datetime.now().replace(microsecond=0)
+        
+        
+        while True:
+            if 8*60 + 50 <= dt.hour*60 + dt.minute <= 10*60 + 30:
+                dt1 = datetime.datetime(dt.year, dt.month, dt.day, 10, 30, 00)
+                time_diff = dt1 - dt
+                print("1限")
+                hour = time_diff.seconds // 3600
+                min = (time_diff.seconds - (hour * 3600)) // 60
+                sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
+                print(f"残り{hour}時間{min}分{sec}秒")
+                break
+        
+            elif 10*60 + 45 <= dt.hour*60 + dt.minute <= 12*45 + 25:
+                dt2 = datetime.datetime(dt.year, dt.month, dt.day, 12, 25, 00)
+                time_diff = dt2 - dt
+                print("2限")
+                hour = time_diff.seconds // 3600
+                min = (time_diff.seconds - (hour * 3600)) // 60
+                sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
+                print(f"残り{hour}時間{min}分{sec}秒")
+                break
+        
+            elif 13*60 + 15 <= dt.hour*60 + dt.minute <= 14*60 + 55:
+                dt3 = datetime.datetime(dt.year, dt.month, dt.day, 14, 55, 00)
+                time_diff = dt3 - dt
+                print("3限")
+                hour = time_diff.seconds // 3600
+                min = (time_diff.seconds - (hour * 3600)) // 60
+                sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
+                print(f"残り{hour}時間{min}分{sec}秒")
+                break
+        
+            elif 15*60 + 10 <= dt.hour*60 + dt.minute <= 16*60 + 50:
+                dt4 =  datetime.datetime(dt.year, dt.month, dt.day, 16, 50, 00)
+                time_diff = dt4 - dt
+                print("4限")
+                hour = time_diff.seconds // 3600
+                min = (time_diff.seconds - (hour * 3600)) // 60
+                sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
+                print(f"残り{hour}時間{min}分{sec}秒")
+                break
+        
+            elif 17*60 + 5 <= dt.hour*60 + dt.minute <= 18*60 + 45:
+                dt5 = datetime.datetime(dt.year, dt.month, dt.day, 18, 45, 00)
+                time_diff = dt5 - dt
+                print("5限")
+                hour = time_diff.seconds // 3600
+                min = (time_diff.seconds - (hour * 3600)) // 60
+                sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
+                print(f"残り{hour}時間{min}分{sec}秒")
+                break
+        
+            else:
+                print("授業時間外です")
+                break
+    </py-script>
+</body>
+</html>
