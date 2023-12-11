@@ -7,67 +7,252 @@
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
     <title>Document</title>
+    <style>
+
+        body {
+            background: linear-gradient(to right, #47cdbb, #29d8e4);
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        
+    </style>
 </head>
 <body>
+    <!--<body bgcolor="cyan"></body> -->
     <py-script>
-        import datetime
-        dt = datetime.datetime.now().replace(microsecond=0)
-        
-        
-        while True:
-            if 8*60 + 50 <= dt.hour*60 + dt.minute <= 10*60 + 30:
-                dt1 = datetime.datetime(dt.year, dt.month, dt.day, 10, 30, 00)
-                time_diff = dt1 - dt
-                print("1限")
-                hour = time_diff.seconds // 3600
-                min = (time_diff.seconds - (hour * 3600)) // 60
-                sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
-                print(f"残り{hour}時間{min}分{sec}秒")
+    import datetime
+    dt = datetime.datetime.now().replace(microsecond=0)
+
+    period = 0
+
+    #debug 
+    #動かすときはコメントアウトして
+    #dt = datetime.datetime(dt.year, dt.month, dt.day, 8, 50, 00)
+
+    #授業終了
+    dt1 = datetime.datetime(dt.year, dt.month, dt.day, 10, 30, 00)
+    dt2 = datetime.datetime(dt.year, dt.month, dt.day, 12, 25, 00)
+    dt3 = datetime.datetime(dt.year, dt.month, dt.day, 14, 55, 00)
+    dt4 =  datetime.datetime(dt.year, dt.month, dt.day, 16, 50, 00)
+    dt5 = datetime.datetime(dt.year, dt.month, dt.day, 18, 45, 00)
+
+    #授業開始
+    d1 = datetime.datetime(dt.year, dt.month, dt.day , 8, 50, 00)
+    d2 = datetime.datetime(dt.year, dt.month, dt.day, 10, 45, 00)
+    d3 = datetime.datetime(dt.year, dt.month, dt.day, 13, 15, 00)
+    d4 =  datetime.datetime(dt.year, dt.month, dt.day, 15, 10, 00)
+    d5 = datetime.datetime(dt.year, dt.month, dt.day, 17, 5, 00)
+
+    #授業終了時刻の表示
+    while True:
+        if 8*60 + 50 <= dt.hour*60 + dt.minute <= 10*60 + 30:
+            period = 1
+            time_diff = dt1 - dt
+            hour = time_diff.seconds // 3600
+            min = (time_diff.seconds - (hour * 3600)) // 60
+            sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
+            print(f"{period}限終了まで残り{hour}時間{min}分{sec}秒")
+            break
+
+        elif 10*60 + 45 <= dt.hour*60 + dt.minute <= 12*60 + 25:
+            period = 2
+            time_diff = dt2 - dt
+            hour = time_diff.seconds // 3600
+            min = (time_diff.seconds - (hour * 3600)) // 60
+            sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
+            print(f"{period}限終了まで残り{hour}時間{min}分{sec}秒")
+            break
+
+        elif 13*60 + 15 <= dt.hour*60 + dt.minute <= 14*60 + 55:
+            period = 3
+            time_diff = dt3 - dt
+            hour = time_diff.seconds // 3600
+            min = (time_diff.seconds - (hour * 3600)) // 60
+            sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
+            print(f"{period}限終了まで残り{hour}時間{min}分{sec}秒")
+            break
+
+        elif 15*60 + 10 <= dt.hour*60 + dt.minute <= 16*60 + 50:
+            period = 4
+            time_diff = dt4 - dt
+            hour = time_diff.seconds // 3600
+            min = (time_diff.seconds - (hour * 3600)) // 60
+            sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
+            print(f"{period}限終了まで残り{hour}時間{min}分{sec}秒")
+            break
+
+        elif 17*60 + 5 <= dt.hour*60 + dt.minute <= 18*60 + 45:
+            period = 5
+            time_diff = dt5 - dt
+            hour = time_diff.seconds // 3600
+            min = (time_diff.seconds - (hour * 3600)) // 60
+            sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
+            print(f"{period}限終了まで残り{hour}時間{min}分{sec}秒")
+            break
+
+        else:
+            print("授業時間外です")
+            break
+
+    #次の授業までの表示
+    while True:
+        #1限
+        if 8*60 + 50 <= dt.hour*60 + dt.minute <= 10*60 + 30:
+            next_time = d2 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period+1}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            next_time = d3 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period+2}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            next_time = d4 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period+3}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            next_time = d5 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period+4}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            break
+
+        #2限
+        elif 10*60 + 45 <= dt.hour*60 + dt.minute <= 12*60 + 25:
+            next_time = d3 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period+1}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            next_time = d4 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period+2}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            next_time = d5 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period+3}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            break
+            
+        #3限
+        elif 13*60 + 15 <= dt.hour*60 + dt.minute <= 14*60 + 55:
+            next_time = d4 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period+1}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            next_time = d5 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period+2}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            break
+
+        #4限
+        elif 15*60 + 10 <= dt.hour*60 + dt.minute <= 16*60 + 50:
+            next_time = d5 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period+1}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            break
+
+        elif 17*60 + 5 <= dt.hour*60 + dt.minute <= 18*60 + 45:
+            period = 1
+            next_time = d1 - dt
+            next_hour = next_time.seconds // 3600
+            next_min = (next_time.seconds - (next_hour * 3600)) // 60
+            next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+            print(f"{period}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+            break
+
+        #授業時間外の処理
+        else:
+            #1~2限の休み時間
+            if 10*60 + 30 < dt.hour*60 + dt.minute < 10*60 + 45:
+                period = 1
+                next_time = d2 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"{period+1}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+                next_time = d3 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"{period+2}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+                next_time = d4 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"{period+3}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+                next_time = d5 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"{period+4}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
                 break
-        
-            elif 10*60 + 45 <= dt.hour*60 + dt.minute <= 12*45 + 25:
-                dt2 = datetime.datetime(dt.year, dt.month, dt.day, 12, 25, 00)
-                time_diff = dt2 - dt
-                print("2限")
-                hour = time_diff.seconds // 3600
-                min = (time_diff.seconds - (hour * 3600)) // 60
-                sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
-                print(f"残り{hour}時間{min}分{sec}秒")
+
+            #2~3限の休み時間
+            elif 12*60 + 25 < dt.hour*60 + dt.minute < 13*60 + 15:
+                period = 2
+                next_time = d3 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"{period+1}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+                next_time = d4 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"{period+2}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+                next_time = d5 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"{period+3}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
                 break
-        
-            elif 13*60 + 15 <= dt.hour*60 + dt.minute <= 14*60 + 55:
-                dt3 = datetime.datetime(dt.year, dt.month, dt.day, 14, 55, 00)
-                time_diff = dt3 - dt
-                print("3限")
-                hour = time_diff.seconds // 3600
-                min = (time_diff.seconds - (hour * 3600)) // 60
-                sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
-                print(f"残り{hour}時間{min}分{sec}秒")
+
+            #3~4限の休み時間
+            elif 14*60 + 55 < dt.hour*60 + dt.minute < 15*60 + 10:
+                period = 3
+                next_time = d4 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"{period+1}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
+                next_time = d5 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"{period+2}限まで残り{next_hour}時間{next_min}分{next_sec}秒")
                 break
-        
-            elif 15*60 + 10 <= dt.hour*60 + dt.minute <= 16*60 + 50:
-                dt4 =  datetime.datetime(dt.year, dt.month, dt.day, 16, 50, 00)
-                time_diff = dt4 - dt
-                print("4限")
-                hour = time_diff.seconds // 3600
-                min = (time_diff.seconds - (hour * 3600)) // 60
-                sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
-                print(f"残り{hour}時間{min}分{sec}秒")
+
+            #4~5限の休み時間
+            elif 16*60 + 50 < dt.hour*60 + dt.minute < 17*60 + 5:
+                next_time = d5 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"5限まで残り{next_hour}時間{next_min}分{next_sec}秒")
                 break
-        
-            elif 17*60 + 5 <= dt.hour*60 + dt.minute <= 18*60 + 45:
-                dt5 = datetime.datetime(dt.year, dt.month, dt.day, 18, 45, 00)
-                time_diff = dt5 - dt
-                print("5限")
-                hour = time_diff.seconds // 3600
-                min = (time_diff.seconds - (hour * 3600)) // 60
-                sec = (time_diff.seconds - ((hour * 3600) + (min * 60)))
-                print(f"残り{hour}時間{min}分{sec}秒")
+
+            #5限以降
+            elif 18*60 + 45 < (dt.hour*60 + dt.minute):
+                next_time = d1 - dt
+                next_hour = next_time.seconds // 3600
+                next_min = (next_time.seconds - (next_hour * 3600)) // 60
+                next_sec = (next_time.seconds - ((next_hour * 3600) + (next_min * 60)))
+                print(f"1限まで残り{next_hour}時間{next_min}分{next_sec}秒")
                 break
-        
+
             else:
-                print("授業時間外です")
-                break
-    </py-script>
+                print("予想外のエラー")
+        </py-script>
 </body>
 </html>
