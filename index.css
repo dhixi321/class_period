@@ -1,0 +1,18 @@
+.gradient { 
+	background:linear-gradient(#56C500, #fff); 
+	height: 500px;
+	border: 1px solid #333;
+}
+
+/* CSSコード */
+.box {
+	background: linear-gradient(#FFF6B7, #F6416C);
+  }
+
+
+body {
+    background: linear-gradient(to right, #47cdbb, #29d8e4); /* グラデーションの開始と終了の色を指定 */
+    /* 他のスタイルも追加できます */
+    color: white; /* テキストの色を白に設定（背景に合わせて適切な色を選択） */
+    font-family: Arial, sans-serif; /* フォントの指定 */
+}
